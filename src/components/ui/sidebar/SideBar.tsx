@@ -1,5 +1,6 @@
 'use client'
 import { useUIStore } from '@/store'
+import clsx from 'clsx'
 import Link from 'next/link'
 
 import React from 'react'
@@ -8,31 +9,47 @@ import { IoCloseOutline, IoLogInOutline, IoPeopleOutline, IoPersonOutline, IoSea
 export const SideBar = () => {
 
 const isSideMenuOpen = useUIStore( state => state.IsSideMenuOpen )
-const closeSideMenu = useUIStore( state => state.closeSideMenu )
+const closeMenu = useUIStore( state => state.closeSideMenu )
 
     return (
         <div className='  '>
             {/*  Background black */}
-            <div
-                className='fixed top-0 left-0 w-screen h-screen bg-black z-10 opacity-30 '
-            >
+            {
+                isSideMenuOpen && (
+                    <div
+                    
+                        className='fixed top-0 left-0 w-screen h-screen bg-black z-10 opacity-30 '
+                    />
+                )
+            }
 
 
-            </div>
+            
             {/* Blur  */}
-            <div className='fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm'>
+            {
+                isSideMenuOpen && (
 
-            </div>
+                    <div onClick={ closeMenu } className='fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm' />
+                )
+            }
+
+            
 
             {/* SideMenu */}
 
             <nav
                 // todo: efecto de slise
-                className='fixed p-5 top-0 right-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300'>
+                className={
+                    clsx('fixed p-5 top-0 right-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300',
+                    {
+                        'translate-x-full': !isSideMenuOpen
+                    }
+                    )
+                }>
                 <IoCloseOutline
                     size={50}
                     className='absolute top-5 right-5'
-                    onClick={() => console.log('click')}
+                    onClick={() => closeMenu() }
                 />
 
                 {/* Imput de busqueda */}
