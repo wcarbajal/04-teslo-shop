@@ -1,4 +1,4 @@
-import { SizeSelector } from "@/components";
+import { ProductMobileSliceshow, ProductSliceshow, QuantitySelector, SizeSelector } from "@/components";
 import { titleFont } from "@/config/fonts";
 import { initialData } from "@/seed/seed";
 import { notFound } from 'next/navigation';
@@ -21,8 +21,17 @@ export default function ProductPage({ params }: Props) {
     return (
         <div className="mt-5 mb-20 grid grid-col-1 md:grid-cols-3 gap-3">
             {/* Sliceshow */}
-            <div className="col-span-1 px-5 md:col-span-2 ">
-                Hola mundo
+            <div className="col-span-1 md:col-span-2 ">
+                {/*          mobile Slice        */}
+                <ProductMobileSliceshow 
+                title={ product.title}
+                images={ product.images }
+                />
+                {/* Desktop Slice
+                <ProductSliceshow 
+                    title={ product.title}
+                    images={ product.images }
+                /> */}
             </div>
 
             {/* Details */}
@@ -41,6 +50,7 @@ export default function ProductPage({ params }: Props) {
                 />
 
                 {/* Selector de cantidad */}
+                <QuantitySelector quantity={ 2 }/>
 
                 {/* Boton */}
                 <button className="btn-primary my-5">
