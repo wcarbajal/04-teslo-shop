@@ -1,12 +1,13 @@
 'use client'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, FreeMode, Navigation } from 'swiper/modules';
+import { Autoplay, FreeMode, Pagination, Navigation } from 'swiper/modules';
 
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 
 import './slideshow.css';
@@ -28,14 +29,18 @@ export const ProductMobileSliceshow = ({ images, title, className }: Props) => {
         <div className={ className }>
 
 <Swiper
-
-        
+        style={{
+            width: '100vw',
+            height: '500px'
+        }
+        }
         navigation={true}
+        pagination= {true}
         autoplay= {{
             delay: 2500,
         }}
         
-        modules={[FreeMode, Navigation, Autoplay, Navigation]}
+        modules={[FreeMode, Pagination, Autoplay, Navigation ]}
         className="mySwiper2"
       >
         {

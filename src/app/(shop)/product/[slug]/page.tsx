@@ -26,12 +26,14 @@ export default function ProductPage({ params }: Props) {
                 <ProductMobileSliceshow 
                 title={ product.title}
                 images={ product.images }
+                className="block md:hidden"
                 />
-                {/* Desktop Slice
+                {/* Desktop Slice */}
                 <ProductSliceshow 
                     title={ product.title}
                     images={ product.images }
-                /> */}
+                    className="hidden md:block"
+                /> 
             </div>
 
             {/* Details */}
