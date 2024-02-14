@@ -66,7 +66,7 @@ export default function CartPage() {
                     {/* Resumen de orden de compra          */}
                     <div className="bg-white rounded-xl shadow-xl p-7">
                         
-                        <h2 className="text-2xl mb-2">Resumnen de orden</h2>
+                        <h2 className="text-2xl mb-2">Resumen de orden</h2>
 
                         <div className="grid grid-cols-2">
                             <span className="font-bold">N°. productos</span>
