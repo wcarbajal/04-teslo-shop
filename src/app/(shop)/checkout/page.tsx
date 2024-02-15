@@ -96,8 +96,8 @@ export default function CartPage() {
                         
                         <p className="mb-5">
                             {/* Disclaimer */}
-                            <span>
-                                Al hacer clic en "Cololar orden, aceptas nuestras condisiones"
+                            <span className="text-xs">
+                                Al hacer clic en &ldquo;Cololar orden&ldquo;, aceptas nuestras <a href="#" className="underline"> términos y condiciones </a> y <a href="#" className="underline"> politicas de uso</a>
                             </span>
                         </p>
                         <div className="mt-5 mb-2 w-full">

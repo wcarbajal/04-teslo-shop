@@ -2,6 +2,7 @@ import { QuantitySelector, Title } from "@/components";
 import { initialData } from "@/seed/seed";
 import Image from "next/image";
 import Link from 'next/link';
+import { redirect } from "next/navigation";
 
 const productsInCart = [
     initialData.products[0],
@@ -11,6 +12,10 @@ const productsInCart = [
 
 ]
 export default function CartPage() {
+    
+    //todo: Por implementar el redireccionamiento.
+    //redirect('/empty')
+
     return (
         <div className="flex justify-center items-center mb-72 px-10 sm:px-0">
 
@@ -64,7 +69,7 @@ export default function CartPage() {
 
                     </div>
                     {/* Resumen de orden de compra          */}
-                    <div className="bg-white rounded-xl shadow-xl p-7">
+                    <div className="bg-white rounded-xl shadow-xl p-7 h-fit">
                         
                         <h2 className="text-2xl mb-2">Resumen de orden</h2>
 

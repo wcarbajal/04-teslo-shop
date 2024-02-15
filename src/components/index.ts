@@ -13,7 +13,9 @@ export * from  './products/size-selector/SizeSelector';
 export * from './products/quantity-selector/QuantitySelector'
 
 export * from './products/sliceshow/ProductSliceshow'
-export * from './products/sliceshow/ProductMobileSliceshow'
+export * from './products/sliceshow/ProductMobileSliceshow';
+
+export * from './ui/footer/Footer'
 
 
 
