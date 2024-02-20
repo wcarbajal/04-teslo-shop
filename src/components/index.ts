@@ -10,12 +10,15 @@ export * from './products/product-grid/ProductGridItem';
 
 export * from  './products/size-selector/SizeSelector';
 
-export * from './products/quantity-selector/QuantitySelector'
+export * from './products/quantity-selector/QuantitySelector';
 
-export * from './products/sliceshow/ProductSliceshow'
+export * from './products/sliceshow/ProductSliceshow';
 export * from './products/sliceshow/ProductMobileSliceshow';
 
-export * from './ui/footer/Footer'
+export * from './ui/footer/Footer';
+
+export * from './ui/pagination/Pagination';
+
 
 
 
