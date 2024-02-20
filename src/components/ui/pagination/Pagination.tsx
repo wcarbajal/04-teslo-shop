@@ -13,20 +13,28 @@ export const Pagination = ({ totalPages }: Prosp) => {
 
     const pathname = usePathname();
     const searchParams = useSearchParams();   
-    const currentPage = searchParams.get('page') ?? 1;
+    const currentPage = Number(searchParams.get('page')) ?? 1;
 
     
     const createPageUrl = (pageNumber: number | string) => {
-        const params = new URLSearchParams();
+
+        const params = new URLSearchParams( searchParams );
+        console.log(params);
         
         if ( pageNumber === '...' ) {
+          
             return `${pathname}?${ params.toString()}`
+
         }
 
         if ( +pageNumber <= 0) {
+           
             return `${ pathname}`;
         }
+
         if (+pageNumber > totalPages) {
+           
+
             return `${ pathname }?${ params.toString() }`;
         }
         params.set('page', pageNumber.toString());
@@ -73,8 +81,15 @@ export const Pagination = ({ totalPages }: Prosp) => {
 
                     <li className="page-item">
                         <Link
+                            className="page-link relative block py-1.5 px-3  border-0 bg-transparent outline-none transition-all duration-300  text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+                            href="#">...
+                        </Link>
+                    </li>
+
+                    <li className="page-item">
+                        <Link
                             className="page-link relative block py-1.5 px-3  border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                            href="#">
+                            href={ createPageUrl( currentPage + 1 )}>
                             <IoChevronForwardOutline size={30} />
                         </Link>
                     </li>
