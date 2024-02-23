@@ -1,4 +1,5 @@
-import { Product } from "@/interface"
+
+import { Product } from '@prisma/client';
 import { ProductGridItem } from './ProductGridItem';
 
 

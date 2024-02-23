@@ -1,47 +1,42 @@
-'use client'
-import { Product } from "@/interface"
+
+
+import { Product } from "@prisma/client";
+import prisma from '@/lib/prisma';
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+import { ProductItem } from "./ProductItem";
 
 
 
 interface Props {
     product: Product;
-    
+
 
 }
 
-export const ProductGridItem = ({ product }: Props) => {
+export const ProductGridItem = async ({ product }: Props) => {
 
-    const [displayImage, setDisplayImage] = useState(product.images[0]);
+    const { id } = product;
+
+    const imagenes = await prisma?.product.findFirst({
+        where: { id: id },
+        select: {
+            ProductImage: {
+                take: 2,
+            }
+        }
+    })
+    const foto1 = imagenes!.ProductImage[0].url;
+    const foto2 = imagenes!.ProductImage[1].url;
+
+    
 
 
     return (
-        <div className="rounded overflow-hidden fade-in">
-                        <Link href={`/product/${product.slug}`}>
-                            <Image
-                                src={`/products/${displayImage}`}
-                                alt={product.title}
-                                className="w-full object-cover rounded-xl"
-                                width={500}
-                                height={500}
-                                onMouseEnter={() => setDisplayImage(product.images[1])}
-                                onMouseLeave={() => setDisplayImage(product.images[0])}
-                            />
-                        </Link>
-
-                        <div className="p-4 flex flex-col">
-                            <Link href={`/product/${product.slug}`} className="hover:text-blue-600">
-                                {product.title}
-                            </Link>
-                            <span className="font-bold">S/. {product.price}</span>
-
-                        </div>
-
-
-                    </div>
+        <ProductItem slug={product.slug} title= {product.title} foto1= {foto1} foto2={foto2} price={product.price} />
 
 
     )
 }
+
